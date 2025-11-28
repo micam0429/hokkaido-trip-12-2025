@@ -17,7 +17,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <script src="https://unpkg.com/lucide-react@0.554.0/umd/lucide-react.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.554.0/umd/lucide-react.min.js"></script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
@@ -1062,7 +1062,8 @@
               {/* Footer Actions */}
               <div className="p-4 border-t border-stone-100 bg-stone-50 shrink-0">
                 <a 
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.location + ' Hokkaido')}`}
+                  // 💥 修正點: 修正 Google Map 連結，確保導航正確
+                  href={`https://maps.google.com/maps?q=${encodeURIComponent(item.location + ' Hokkaido')}`}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full py-3 bg-hokkaido-text text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-stone-700 active:scale-95 transition-all"
