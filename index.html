@@ -54,17 +54,15 @@
       
       const { useState, useEffect, useMemo } = React;
       
-      // 📌 修正點 1: 採用防禦性載入策略，以避免外部 CDN 尚未載入完成時發生 TypeError
-      // 1. 定義 NullIcon 作為所有圖標的備用組件
+      // 📌 防禦性載入策略：確保即使 CDN 載入延遲，程式也不會拋出 TypeError
       const NullIcon = ({ size, className }) => <div className={`${className || ''}`} style={{ width: size, height: size }}></div>;
       
-      // 2. 預先定義所有需要的圖標變數，並賦予 NullIcon 作為初始值
       let MapPin = NullIcon, Clock = NullIcon, Train = NullIcon, Utensils = NullIcon, Camera = NullIcon, Hotel = NullIcon, X = NullIcon, Navigation = NullIcon, Wallet = NullIcon, Info = NullIcon, Calendar = NullIcon, ChevronRight = NullIcon, Plus = NullIcon, Trash2 = NullIcon, Divide = NullIcon, Calculator = NullIcon, CreditCard = NullIcon, DollarSign = NullIcon, CloudRain = NullIcon, CloudSnow = NullIcon, Sun = NullIcon, Cloud = NullIcon, Thermometer = NullIcon, Plane = NullIcon, Phone = NullIcon, ShieldAlert = NullIcon;
       
       const LucideIcons = window.LucideReact;
 
       if (LucideIcons) {
-          // 3. 只有當 window.LucideReact 存在時，才進行解構覆蓋
+          // 只有當 window.LucideReact 存在時，才進行解構覆蓋
           ({ 
               MapPin, Clock, Train, Utensils, Camera, Hotel, X, Navigation, Wallet, Info, Calendar, ChevronRight, Plus, Trash2, Divide, Calculator, CreditCard, DollarSign, CloudRain, CloudSnow, Sun, Cloud, Thermometer, Plane, Phone, ShieldAlert 
           } = LucideIcons);
@@ -73,7 +71,7 @@
       // 類型定義
       const Category = { Flight: 'Flight', Transport: 'Transport', Food: 'Food', Sightseeing: 'Sightseeing', Hotel: 'Hotel' };
 
-      // ITINERARY_DATA 行程資料 (從 constants.ts 檔案整合)
+      // ITINERARY_DATA 行程資料
       const ITINERARY_DATA = [
         {
           day: 1,
@@ -840,14 +838,17 @@
                   <input 
                     type="number" 
                     placeholder="總金額 ¥" 
-                    className="flex-1 p-3 bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
+                    // 💥 修正: 調整 padding (p-2.5) 和 text size (text-sm)
+                    className="flex-1 p-2.5 text-sm bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                   />
                   <input 
                     type="text" 
-                    placeholder="付款方式 (Cash/Card)" 
-                    className="flex-1 p-3 bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
+                    // 💥 修正: 縮短 placeholder
+                    placeholder="付款方式" 
+                    // 💥 修正: 調整 padding (p-2.5) 和 text size (text-sm)
+                    className="flex-1 p-2.5 text-sm bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
                     value={paymentMethod}
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
@@ -1050,7 +1051,6 @@
 
               {/* Footer Actions */}
               <div className="p-4 border-t border-stone-100 bg-stone-50 shrink-0">
-                {/* 📌 修正點 2: 使用正確的 Google Maps 查詢 URL */}
                 <a 
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.location + ' Hokkaido')}`}
                   target="_blank"
