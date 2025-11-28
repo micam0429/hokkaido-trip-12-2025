@@ -53,8 +53,11 @@
       // --- 1. 依賴項和類型定義 (包含所有行程資料) ---
       
       const { useState, useEffect, useMemo } = React;
-      // 📌 修正點 2: 從 lucide 變為 LucideReact (lucide-react UMD 預設全域變數)
-      const { MapPin, Clock, Train, Utensils, Camera, Hotel, X, Navigation, Wallet, Info, Calendar, ChevronRight, Plus, Trash2, Divide, Calculator, CreditCard, DollarSign, CloudRain, CloudSnow, Sun, Cloud, Thermometer, Plane, Phone, ShieldAlert } = LucideReact;
+      
+      // 📌 修正點 1: 從 window 取得 LucideReact 變數，並設置一個空對象作為備援，以解決 Babel/UMD Scoping 錯誤
+      const LucideIcons = window.LucideReact || {};
+      
+      const { MapPin, Clock, Train, Utensils, Camera, Hotel, X, Navigation, Wallet, Info, Calendar, ChevronRight, Plus, Trash2, Divide, Calculator, CreditCard, DollarSign, CloudRain, CloudSnow, Sun, Cloud, Thermometer, Plane, Phone, ShieldAlert } = LucideIcons;
 
       // 類型定義
       const Category = { Flight: 'Flight', Transport: 'Transport', Food: 'Food', Sightseeing: 'Sightseeing', Hotel: 'Hotel' };
@@ -469,7 +472,7 @@
         {
           day: 7,
           date: '12/09',
-          weekday: '二',
+          weekday: '日',
           city: 'Sapporo',
           lat: 43.0618,
           lng: 141.3545,
@@ -1036,7 +1039,7 @@
 
               {/* Footer Actions */}
               <div className="p-4 border-t border-stone-100 bg-stone-50 shrink-0">
-                {/* 📌 修正點 3: 修正 Google Maps URL 結構 */}
+                {/* 📌 修正點 2: 使用正確的 Google Maps URL 結構 */}
                 <a 
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.location + ' Hokkaido')}`}
                   target="_blank"
