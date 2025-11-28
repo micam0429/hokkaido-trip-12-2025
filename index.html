@@ -834,21 +834,23 @@
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                <div className="flex gap-2">
+                
+                {/* 💥 修正點: 將並排 (flex gap-2) 改為上下堆疊 (space-y-3) */}
+                <div className="space-y-3">
                   <input 
                     type="number" 
                     placeholder="總金額 ¥" 
-                    // 💥 修正: 調整 padding (p-2.5) 和 text size (text-sm)
-                    className="flex-1 p-2.5 text-sm bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
+                    // 修正: 確保全寬 (w-full) 並使用標準內邊距
+                    className="w-full p-3 bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                   />
                   <input 
                     type="text" 
-                    // 💥 修正: 縮短 placeholder
+                    // 修正: 使用縮短的 placeholder
                     placeholder="付款方式" 
-                    // 💥 修正: 調整 padding (p-2.5) 和 text size (text-sm)
-                    className="flex-1 p-2.5 text-sm bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
+                    // 修正: 確保全寬 (w-full) 並使用標準內邊距
+                    className="w-full p-3 bg-stone-50 rounded-xl border-none focus:ring-2 focus:ring-hokkaido-blue outline-none"
                     value={paymentMethod}
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
