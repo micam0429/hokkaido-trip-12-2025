@@ -68,11 +68,16 @@
       const LucideIcons = window.lucideReact;
 
       if (LucideIcons) {
-          // 只有當 window.LucideReact 存在時，才進行解構覆蓋，此時所有的圖標都是 React 組件
-          ({ 
-              MapPin, Clock, Train, Utensils, Camera, Hotel, X, Navigation, Wallet, Info, Calendar, ChevronRight, Plus, Trash2, Divide, Calculator, CreditCard, DollarSign, CloudRain, CloudSnow, Sun, Cloud, Thermometer, Plane, Phone, ShieldAlert 
-          } = LucideIcons);
-      }
+    // 【✅ 修正點 1】 檢查 UMD 模組是否將所有具名匯出放入一個 'default' 屬性中
+    const iconSource = LucideIcons.default || LucideIcons; 
+    
+    if (iconSource) {
+        // 只有當 window.LucideReact 存在時，才進行解構覆蓋，此時所有的圖標都是 React 組件
+        ({ 
+            MapPin, Clock, Train, Utensils, Camera, Hotel, X, Navigation, Wallet, Info, Calendar, ChevronRight, Plus, Trash2, Divide, Calculator, CreditCard, DollarSign, CloudRain, CloudSnow, Sun, Cloud, Thermometer, Plane, Phone, ShieldAlert 
+        } = iconSource);
+    }
+}
 
       // 類型定義
       const Category = { Flight: 'Flight', Transport: 'Transport', Food: 'Food', Sightseeing: 'Sightseeing', Hotel: 'Hotel', Wake: 'Wake' };
@@ -1141,8 +1146,8 @@
               {/* Footer Actions */}
               <div className="p-4 border-t border-stone-100 bg-stone-50 shrink-0">
                 <a 
-                  // 修正 Google Map 連結
-                  href={`https://maps.google.com/maps?q=${encodeURIComponent(item.location + ' Hokkaido')}`}
+                  // 【✅ 修正點 2】修正 Google Map 連結，使用標準 Google Maps URL
+                  href={`https://www.google.com/maps/search?api=1&query=${encodeURIComponent(item.location + ' Hokkaido')}`}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full py-3 bg-hokkaido-text text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-stone-700 active:scale-95 transition-all"
