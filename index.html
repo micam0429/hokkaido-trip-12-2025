@@ -76,7 +76,7 @@
       }
 
       // 類型定義
-      const Category = { Flight: 'Flight', Transport: 'Transport', Food: 'Food', Sightseeing: 'Sightseeing', Hotel: 'Hotel' };
+      const Category = { Flight: 'Flight', Transport: 'Transport', Food: 'Food', Sightseeing: 'Sightseeing', Hotel: 'Hotel', Wake: 'Wake' };
 
       // ITINERARY_DATA 行程資料
       const ITINERARY_DATA = [
@@ -139,6 +139,15 @@
                 '必吃: 煎餃 (皮薄餡多)'
               ],
               imageUrl: 'https://picsum.photos/400/300?random=1'
+            },
+            {
+              id: 'd1-hotel',
+              time: 'Check-in',
+              title: 'JR Inn 函館',
+              category: Category.Hotel,
+              description: '位於函館站旁，交通極便利',
+              location: 'JR Inn Hakodate',
+              tags: ['連住2晚']
             }
           ]
         },
@@ -152,8 +161,18 @@
           title: '函館經典巡禮',
           items: [
             {
+              id: 'd2-wake',
+              time: '7:30',
+              title: '集合',
+              category: Category.Wake,
+              description: '',
+              location: 'JR Inn 函館',
+              tags: ['集合'],
+              details: ['集合']
+            },
+            {
               id: 'd2-breakfast',
-              time: '早餐',
+              time: '8:00',
               title: '函館朝市 - 海真',
               jpTitle: 'Kaishin',
               category: Category.Food,
@@ -161,6 +180,17 @@
               location: 'Hakodate Morning Market',
               tags: ['烤扇貝', '生蠔'],
               details: ['必吃: 烤扇貝/活扇貝 (肉質肥厚)', '必吃: 生蠔 (厚岸產，奶香味重)']
+            },
+            {
+              id: 'd2-lunch',
+              time: '9:30',
+              title: '村上海膽 函館本店',
+              jpTitle: 'Uni Murakami',
+              category: Category.Food,
+              description: '無添加明礬海膽',
+              location: 'Uni Murakami Hakodate',
+              tags: ['生海膽丼'],
+              details: ['標榜不使用明礬', '必吃: 生海膽丼 (甘甜無苦味)']
             },
             {
               id: 'd2-transport-goryokaku',
@@ -181,17 +211,6 @@
               location: 'Goryokaku Tower',
               tags: ['必拍'],
               details: ['新選組土方歲三最後戰場', '必登塔俯瞰星形']
-            },
-            {
-              id: 'd2-lunch',
-              time: '12:30',
-              title: '村上海膽 函館本店',
-              jpTitle: 'Uni Murakami',
-              category: Category.Food,
-              description: '無添加明礬海膽',
-              location: 'Uni Murakami Hakodate',
-              tags: ['生海膽丼'],
-              details: ['標榜不使用明礬', '必吃: 生海膽丼 (甘甜無苦味)']
             },
             {
               id: 'd2-spot-slope',
@@ -224,7 +243,15 @@
               location: 'Lucky Pierrot Marina',
               tags: ['No.1人氣', '中華雞腿堡'],
               details: ['必吃: 中華雞腿漢堡 (酸甜醬汁)', '必吃: 幸運薯條 (淋上肉醬起司)']
-            }
+            },
+            {
+              id: 'd2-hotel',
+              time: 'Check-in',
+              title: 'JR Inn 函館',
+              category: Category.Hotel,
+              description: '位於函館站旁，交通極便利',
+              location: 'JR Inn Hakodate',
+              tags: ['連住2晚']
           ]
         },
         {
@@ -236,6 +263,16 @@
           lng: 140.8244,
           title: '洞爺湖溫泉',
           items: [
+            {
+              id: 'd3-wake',
+              time: '7:30',
+              title: '集合',
+              category: Category.Wake,
+              description: '',
+              location: 'JR Inn 函館',
+              tags: ['集合'],
+              details: ['集合']
+            },
             {
               id: 'd3-breakfast',
               time: '早餐',
@@ -346,7 +383,7 @@
               category: Category.Hotel,
               description: '狸小路商店街內，頂樓溫泉＋免費夜鳴拉麵',
               location: 'Dormy Inn Sapporo Annex',
-              tags: ['溫泉', '夜鳴拉麵', '連住']
+              tags: ['溫泉', '夜鳴拉麵', '連住4晚']
             }
           ]
         },
@@ -359,6 +396,16 @@
           lng: 140.9947,
           title: '小樽浪漫之旅',
           items: [
+            {
+              id: 'd5-wake',
+              time: '7:30',
+              title: '集合',
+              category: Category.Wake,
+              description: '',
+              location: 'Dormy Inn Sapporo Annex',
+              tags: ['集合', 'LAWSON 早餐'],
+              details: ['集合']
+            },
             {
               id: 'd5-transport',
               time: '08:30',
@@ -439,7 +486,7 @@
               category: Category.Hotel,
               description: '狸小路商店街內，頂樓溫泉＋免費夜鳴拉麵',
               location: 'Dormy Inn Sapporo Annex',
-              tags: ['溫泉', '夜鳴拉麵', '連住']
+              tags: ['溫泉', '夜鳴拉麵', '連住4晚']
             }
           ]
         },
@@ -452,6 +499,16 @@
           lng: 141.3545,
           title: '札幌買買買',
           items: [
+            {
+              id: 'd6-wake',
+              time: '7:30',
+              title: '集合',
+              category: Category.Wake,
+              description: '',
+              location: 'Dormy Inn Sapporo Annex',
+              tags: ['集合'],
+              details: ['集合']
+            },
             {
               id: 'd6-breakfast',
               time: '早餐',
@@ -508,7 +565,7 @@
               category: Category.Hotel,
               description: '狸小路商店街內，頂樓溫泉＋免費夜鳴拉麵',
               location: 'Dormy Inn Sapporo Annex',
-              tags: ['溫泉', '夜鳴拉麵', '連住']
+              tags: ['溫泉', '夜鳴拉麵', '連住4晚']
             }
           ]
         },
@@ -555,7 +612,7 @@
               category: Category.Hotel,
               description: '狸小路商店街內，頂樓溫泉＋免費夜鳴拉麵',
               location: 'Dormy Inn Sapporo Annex',
-              tags: ['溫泉', '夜鳴拉麵', '連住']
+              tags: ['溫泉', '夜鳴拉麵', '連住4晚']
             }
           ]
         },
@@ -661,7 +718,7 @@
               <div className="space-y-4">
                 {[
                   { name: 'JR Inn Hakodate', city: '函館', note: '就在JR站旁，枕頭可自選，頂樓有大浴場' },
-                  { name: 'Toya Nonokaze Resort', city: '洞爺湖', note: '全室湖景，頂樓無邊際溫泉，煙火景色' },
+                  { name: 'Toya Nonokaze Resort', city: '洞爺湖', note: '全室湖景，頂樓無邊際溫泉' },
                   { name: 'Dormy Inn Sapporo Annex', city: '札幌', note: '狸小路商店街內，提供免費夜鳴拉麵' }
                 ].map((h, i) => (
                   <div key={i} className="border-b border-stone-100 pb-3 last:border-0 last:pb-0">
@@ -999,6 +1056,7 @@
           case Category.Food: return <Utensils size={18} className="text-orange-500" />;
           case Category.Sightseeing: return <Camera size={18} className="text-emerald-500" />;
           case Category.Hotel: return <Hotel size={18} className="text-purple-500" />;
+          case Category.Wake: return <Plane size={18} className="text-red-500" />; 
           default: return <Info size={18} className="text-gray-500" />;
         }
       };
