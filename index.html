@@ -653,10 +653,10 @@
               ]
             },
             {
-              id: 'd8-flight',
+              id: 'd8-',
               time: '16:30',
               title: '航班 HX693',
-              category: Category.Flight,
+              category: Category.,
               description: 'CTS → HKG',
               location: 'New Chitose Airport',
               details: ['起飛: 16:30 CTS', '降落: 21:50 HKG']
@@ -1057,7 +1057,6 @@
           case Category.Food: return <Utensils size={18} className="text-orange-500" />;
           case Category.Sightseeing: return <Camera size={18} className="text-emerald-500" />;
           case Category.Hotel: return <Hotel size={18} className="text-purple-500" />;
-          case Category.Wake: return <Plane size={18} className="text-red-500" />; 
           default: return <Info size={18} className="text-gray-500" />;
         }
       };
@@ -1254,6 +1253,7 @@
                           ${item.category === Category.Transport ? 'bg-blue-400' :
                             item.category === Category.Flight ? 'bg-indigo-400' :
                             item.category === Category.Food ? 'bg-orange-400' :
+                            item.category === Category.Wake ? 'bg-red-400' :
                             item.category === Category.Sightseeing ? 'bg-emerald-400' : 'bg-purple-400'}`}
                         />
 
